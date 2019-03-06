@@ -20,8 +20,18 @@ class App extends Component {
       selected: ""
     }
   }
+  /* je veux modifier l'input quand c'est un caracter non admis*/
+  cuttingLetter = (text)=>{
+    let nt
+    if(text.length!==0){
+      if(/[a-z]/.test(text)){
+         let nt = text.slice(0,text.length-2)
+      }
+    }
+    return null;
+  }
   componentDidUpdate(){
-    console.log(`etat de touched : \n binInput==>${this.state.touched.binInput} \n hexInput==> ${this.state.touched.hexInput} \n decInput==> ${this.state.touched.decInput}`)
+    //console.log(`etat de touched : \n binInput==>${this.state.touched.binInput} \n hexInput==> ${this.state.touched.hexInput} \n decInput==> ${this.state.touched.decInput}`)
   }
   handleInput=(e)=>{
     const target = e.target;
@@ -85,8 +95,6 @@ class App extends Component {
       }
       dec=Math.trunc(dec/16);
     }
-    
-    //console.log(hexTab[])
     if(dec<16){
       for( i=0;i<hexTab.length;i++){
         if(dec===i){
@@ -133,56 +141,56 @@ class App extends Component {
     })
   }
   render() {
-    let test =  this.state.decInput.length!==0 && this.decToBin(this.state.decInput)
+    console.log(this.cuttingLetter(this.state.binInput))
+    let decInput = this.state.decInput;
+    let hexInput = this.state.hexInput;
+    let binInput = /[a-z]/g.test(this.state.binInput)?null : this.state.binInput;
     let dectobin = this.state.decInput.length!==0?this.decToBin(this.state.decInput):null;
     let dectohex = this.state.decInput.length!==0?this.decToHex(this.state.decInput):null;
     let bintodec = this.state.binInput.length!==0?this.binToDec(this.state.binInput):null;
     let bintohex = this.state.binInput.length!==0?this.binToHex(this.state.binInput):null;
     let hextobin = this.state.hexInput.length!==0?this.hexToBin(this.state.hexInput):null;
     let hextodec = this.state.hexInput.length!==0?this.hexToDec(this.state.hexInput):null;
-    console.log("Binaire  "+dectobin)
-    console.log("Hexadecimal  "+dectohex)
-    console.log("Decimal  "+bintodec)
-    console.log("Hexadecimal  "+bintohex)
-    console.log("Binaire  "+hextobin)
-    console.log("Decimal  "+hextodec)
-    console.log("test "+test)
     return (
       <div className="App">
-          <Hex hexInput={this.state.hexInput}
-               handleInput={this.handleInput} 
-               selected={this.state.selected}
-               handleField={this.handleField}
-               onBlur={this.onBlur}
-               onFocus={this.onFocus}
-               touched={this.state.touched}
-               dectohex={dectohex}
-               bintohex={bintohex}
-               decInput={this.state.decInput}/>
-          
-          
-          <Dec decInput={this.state.decInput}
-               handleInput={this.handleInput}
-               selected={this.state.selected} 
-               handleField={this.handleField}
-               onBlur={this.onBlur}
-               onFocus={this.onFocus}
-               bintodec={bintodec}
-               hextodec={hextodec}
-               touched={this.state.touched}
-               vider={this.viderInput}/>
+        <dv className="wrapper">
+          <h2 className="app-name">Converter</h2>
+            <Hex hexInput={this.state.hexInput}
+                handleInput={this.handleInput} 
+                selected={this.state.selected}
+                handleField={this.handleField}
+                onBlur={this.onBlur}
+                onFocus={this.onFocus}
+                touched={this.state.touched}
+                dectohex={dectohex}
+                bintohex={bintohex}
+                decInput={this.state.decInput}/>
+            
+            
+            <Dec decInput={this.state.decInput}
+                handleInput={this.handleInput}
+                selected={this.state.selected} 
+                handleField={this.handleField}
+                onBlur={this.onBlur}
+                onFocus={this.onFocus}
+                bintodec={bintodec}
+                hextodec={hextodec}
+                touched={this.state.touched}
+                vider={this.viderInput}/>
 
 
-          <Bin binInput={this.state.binInput} 
-               handleInput={this.handleInput} 
-               selected={this.state.selected} 
-               handleField={this.handleField}
-               onBlur={this.onBlur}
-               onFocus={this.onFocus}
-               dectobin={dectobin}
-               hextobin={hextobin}
-               touched={this.state.touched}
-               decInput={this.state.decInput}/>
+            <Bin binInput={binInput} 
+                handleInput={this.handleInput} 
+                selected={this.state.selected} 
+                handleField={this.handleField}
+                onBlur={this.onBlur}
+                onFocus={this.onFocus}
+                dectobin={dectobin}
+                hextobin={hextobin}
+                touched={this.state.touched}
+                decInput={this.state.decInput}/>
+        </dv>
+          
       </div>
     );
   }
