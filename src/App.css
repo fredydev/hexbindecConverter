@@ -1,12 +1,14 @@
 .App{
-  display: grid;
+  display: flex;
   justify-content: center;
-  
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
 }
 .wrapper{
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
-  margin-top: 100px;
+  border:  solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
   width: 350px;
   height: 400px;
   display: flex;
@@ -29,6 +31,19 @@ input{
   box-shadow: 0 0 1px ,0px 0px 4px rgba(94, 96, 226, 1);
   
 }
+h6{
+  position: absolute;
+  top: 100%;
+}
 input[number]{
   background: red;
 }
+@media screen and (max-width: 760px) {
+  .App{
+    width: 100%;
+  }
+  .wrapper{
+    width:100%;
+  }
+
+ }

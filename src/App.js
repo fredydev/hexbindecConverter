@@ -214,6 +214,7 @@ class App extends Component {
                 dectobin={this.state.dectobin}
                 hextobin={this.state.hextobin}
                 touched={this.state.touched}/>
+                <h6>coded by fedydev</h6>
         </div>
           
       </div>
