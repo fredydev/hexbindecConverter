@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In this project I am implementing some cryptographic encryption systems in Javascript.
+
+
 
 ## Available Scripts
 

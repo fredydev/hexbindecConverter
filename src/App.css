@@ -1,4 +1,4 @@
-.App{
+.Main{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@
   justify-content: center;
   position: relative;
 }
-.wrapper .app-name{
+.wrapper .main-name{
   position: absolute;
   top: -10%;
   left: 8%;
@@ -38,8 +38,12 @@ h6{
 input[number]{
   background: red;
 }
+.caesar input{
+  color: transparent;
+  text-shadow: 0 0 0 #2196f3;
+}
 @media screen and (max-width: 760px) {
-  .App{
+  .Main{
     width: 100%;
   }
   .wrapper{
